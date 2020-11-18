@@ -1,0 +1,202 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-top: 25px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.table-light th {
+    background-color: #ccdc3a;
+}
+
+.table-light th:hover {
+    background-color: #cddc4b !important;
+}
+
+.table th, .table td {
+    padding: 0.25rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.bg-light {
+    background-color: #03afcd !important;
+}
+
+.centered {
+    margin: 0 auto;
+    float: none;
+}
+
+.jumbotron {
+    padding: 1.5rem;
+    margin: 0;
+}
+
+.site-title {
+    font-size: 2.5rem;
+    color: #03afcd;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+    border: none;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #03afcd !important;
+}
+
+.btn-secondary {
+    background-color: #cddc4b !important;
+}
+
+.btn-sm {
+    padding: 1px 5px;
+}
+
+input#busca {
+    border-radius: 0;
+}
+
+button#search-button {
+    height: 100%;
+}
+
+label {
+    color: #808080;
+}
+
+.panel {
+    border: none;
+    box-shadow: none;
+    background-color: #f9f9f9;
+}
+
+.panel-heading {
+    background-color: #ccdc3a !important;
+    padding: 5px 7px;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.panel-body {
+    border-radius: 0;
+}
+
+.navbar-brand {
+    padding-left: 4rem;
+    width: 175px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    height: auto;
+}
+
+.navbar-light {
+    background-color: #03afcd;
+}
+
+ul.pagination > li:first-child > a,
+ul.pagination > li:first-child > span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+ul.pagination > li > a {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    background-color: #fafafa;
+    cursor:pointer;
+}
+
+ul.pagination > li:last-child > a,
+ul.pagination > li:last-child > span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #ccdc3a;
+    border-color: #ccdc3a;
+    cursor: default;
+}
+
+.pagination > .disabled > a,
+.pagination > .disabled > span,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > a:focus,
+.pagination > .disabled > span:focus {
+    cursor: default;
+}
+
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    color: #2a6496;
+    background-color: #ccdc3a;
+    border-color: #ddd;
+    cursor: pointer;
+}
+
+.table-light th, .table-light td, .table-light thead th, .table-light tbody + tbody {
+    border-color: #fff !important;
+}
+
+html, body {
+    height: 100% !important;
+}
+
+.full-height {
+    min-height: 95% !important;
+}
+
+.search.form-group {
+    display: none !important;
+}
+
+.input-group {
+    display: flex !important;
+}
+
+.btn-default {
+    background-color: #eeeeee;
+    color: black;
+}

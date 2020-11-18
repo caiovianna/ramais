@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ramais Energisa</title>
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/jquery.bootgrid.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-light">
+        <img class="navbar-brand" src="~/Content/img/logo_energisa.png" />
+    </nav>
+    <div class="full-height">
+        @RenderBody()
+    </div>
+    
+    <div align="center">
+        <img class="centered" src="~/Content/img/logo_GEAR.png" />
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,150 @@
+﻿@model Ramais.Models.Ramal
+
+@{
+    ViewBag.Title = "Ramais";
+}
+
+<div class="jumbotron" align="center">
+        
+        
+    <div style="margin-bottom: 15px">
+        <img style="vertical-align:bottom" src="~/Content/img/icone_lista.png" width="30" />
+        <span class="site-title">Lista de Ramais</span>
+    </div>
+    
+    <div class="col-lg-3 centered">
+        <div class="input-group">
+            <input type="text" class="form-control" id="busca" placeholder="Busque um ramal" aria-label="Busque um ramal" aria-describedby="button">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button" id="search-button">
+                    <img src="~/Content/img/icone-lupa.png" width="20" />
+                </button>
+            </span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container body-content">
+    <div class="row">
+
+        <table class="table table-light table-condensed table-hover table-striped table-bordered" id="ramais">
+            <thead>
+                <tr>
+                    <th data-column-id="Nome" data-sortable>
+                        Nome
+                    </th>
+                    <th data-column-id="Numero" data-sortable>
+                        Número
+                    </th>
+                    <th data-column-id="Setor" data-sortable>
+                        Setor
+                    </th>
+                    <th data-column-id="Matricula" data-sortable>
+                        Matrícula
+                    </th>
+                    <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="row">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Adicionar novo ramal</div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nome)
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Numero, "Número")
+                            @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control", @id = "numero" } })
+                            @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Setor)
+                            @Html.EditorFor(model => model.Setor, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Setor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Matricula, "Matrícula")
+                            @Html.EditorFor(model => model.Matricula, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Matricula, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="">&nbsp;</label>
+                            <div class="col-md-12">
+                                <input type="submit" value="Criar" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.bootgrid.js"></script>
+    <script type="text/javascript">
+        $(document).ready(carregarRamais);
+
+        $(document).ready(function(){
+          $('#numero').inputmask({
+            mask: ["(99) 9999-9999", "(99) 99999-9999"],
+            keepStatic: true
+          });
+        });
+
+        $("#busca").keyup(function () {
+            $(".search-field").val($("#busca").val());
+            $(".search-field").keyup()
+        })
+
+        function carregarRamais() {
+            var grid = $('#ramais').bootgrid({
+                labels: {
+                    noResults: "Nenhum resultado encontrado",
+                    all: "todos",
+                    infos: "Exibindo {{ctx.start}} a {{ctx.end}} de {{ctx.total}} resultados",
+                    loading: "Carregando...",
+                    refresh: "Atualizar",
+                    search: "Buscar"
+                },
+                formatters: {
+                    commands: function (column, row)
+                    {
+                        return "<a class=\"btn btn-sm btn-secondary\" href=\"/Ramais/Details/" + row.Id + "\"><span class=\"glyphicon glyphicon-eye-open\" aria-hidden=\"true\"></span></a> " +
+                            "<a class=\"btn btn-sm btn-info\" href=\"/Ramais/Edit/" + row.Id + "\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a> " +
+                            "<a class=\"btn btn-sm btn-danger\" href=\"/Ramais/Delete/" + row.Id + "\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>";
+                    }
+                },
+                ajax: true,
+                post : function ()
+                {
+                    return {
+                        id : "b0df282a-0d67-40e5-8558-c9e93b7befed"
+                        };
+                },
+                url: "@Url.Action("Listar")"
+            });
+        }
+    </script>
+}

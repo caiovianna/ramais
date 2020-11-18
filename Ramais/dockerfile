@@ -1,0 +1,19 @@
+FROM microsoft/dotnet:2.2-sdk AS build-env
+WORKDIR /app
+
+ENV HTTP_PROXY http://proxymg.scl.corp:3128
+ENV HTTPS_PROXY http://proxymg.scl.corp:3128
+
+# Copiar csproj e restaurar dependencias
+COPY *.csproj ./
+RUN dotnet restore
+
+# Build da aplicacao
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Build da imagem
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "wsenergisa.dll"]

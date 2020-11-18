@@ -1,0 +1,80 @@
+﻿@model Ramais.Models.Ramal
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<div class="col-sm-4 centered">
+    <h4>Detalhes do Ramal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            Número
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Setor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Setor)
+        </dd>
+
+        <dt>
+            Matrícula
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matricula)
+        </dd>
+
+        <dt>
+            Criado por
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioCriacao)
+        </dd>
+
+        <dt>
+            Alterado por
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioAlteracao)
+        </dd>
+
+        <dt>
+            Criado em
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCriacao)
+        </dd>
+
+        <dt>
+            Alterado em
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAlteracao)
+        </dd>
+
+    </dl>
+</div>
+<div class="col-lg-3 centered">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Voltar à lista", "Index", "Home")
+</div>

@@ -1,0 +1,69 @@
+@model IEnumerable<Ramais.Models.Ramal>
+
+@{
+    ViewBag.Title = "Ramais";
+}
+
+<h2>Lista de Ramais</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create", null, new { @class="btn btn-primary" })
+</p>
+<table class="" id="ramais">
+    <tr>
+        <th data-column-id="Nome">
+            Nome
+        </th>
+        <th data-column-id="Numero">
+            Número
+        </th>
+        <th data-column-id="Setor">
+            Setor
+        </th>
+        <th data-column-id="Matricula">
+            Matrícula
+        </th>
+        <th></th>
+    </tr>
+
+</table>
+
+@section scripts{
+    <script src="~/Scripts/jquery.bootgrid.js"></script>
+    <script type="text/javascript">
+        $(document).ready(carregarRamais);
+
+        function carregarRamais() {
+            $('#ramais').bootgrid({
+                ajax: true,
+                post : function ()  
+                {
+                    return { 
+                        id : "b0df282a-0d67-40e5-8558-c9e93b7befed" 
+                        };
+                }
+                url: "@Url.Action("Listar")",
+
+                formatters: {
+                    "commands": function(column, row)
+                    {
+                    return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " + 
+                        "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></button>";
+                    }
+                }
+
+            }) .on("loaded.rs.jquery.bootgrid", function()
+            {
+                /* Executes after data is loaded and rendered */
+                grid.find(".command-edit").on("click", function(e)
+                {
+                    alert("You pressed edit on row: " + $(this).data("row-id"));
+                }).end().find(".command-delete").on("click", function(e)
+                
+                {
+                    alert("You pressed delete on row: " + $(this).data("row-id"));
+                            });
+            });
+        }
+    </script>
+}
